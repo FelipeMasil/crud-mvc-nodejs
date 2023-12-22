@@ -32,6 +32,26 @@ class UserRespository {
             return error
         }
     }
+
+    async update(id, email, idade) {
+        try {
+            const sql = `UPDATE USUARIOS SET EMAIL = '${email.toUpperCase()}', IDADE = '${idade}' WHERE ID = ${id}`
+            const result = await db.query(sql)
+            return result
+        } catch (error) {
+            return error
+        }
+    }
+
+    async delete(id) {
+        try {
+            const sql = `DELETE FROM USUARIOS WHERE ID = ${id}`
+            const result = await db.query(sql);
+            return result
+        } catch (error) {
+            return error
+        }
+    }
 }
 
 export default new UserRespository();
